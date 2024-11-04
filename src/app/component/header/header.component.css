@@ -1,7 +1,9 @@
 header{
     border: 0px solid orange;
-    background-color: aquamarine;
+    background-color: #682145;
+    color: white;
     font-size: large;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,5 +22,5 @@ nav{
 
 a{
     text-decoration: none;
-    color: black;
+    color: white;
 }

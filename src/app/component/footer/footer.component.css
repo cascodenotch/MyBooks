@@ -1,6 +1,7 @@
 footer{
     border: 0px solid orange;
-    background-color: aquamarine;
+    background-color: #682145;
+    color: white;
     font-size: large;
     display: flex;
     justify-content: space-between;
@@ -14,6 +15,12 @@ footer{
     font-size: medium;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     width: 50%;
     gap:10px ;
+}
+
+img {
+    height: 30px;
+    width: auto;
 }

@@ -1,8 +1,23 @@
-div{
-    border: 0px solid purple;
+.contenedor-principal {
+    border: 0px solid red;
     min-height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.titular{
+    border: 0px solid purple;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    gap: 5px;
+}
+
+img{
+    width: 35%;
+    height: 100%;
+
 }

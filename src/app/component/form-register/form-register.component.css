@@ -1,32 +1,40 @@
 form{
-    background-color: grey;
+    background-color: #FBC5C3;
     border: 0px solid greenyellow;
-    height: 420px;
+    height: 500px;
     width: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     gap: 5px;
 }
 
 button{
-    background-color: aquamarine ;
+    background-color: #CB607D ;
     padding: 10px;
     border-radius: 2px;
     border: transparent;
     margin: 30px;
+    width: 5cm;
+}
+
+input{
+    width: 5cm;
 }
 
 input:focus{
-    outline: 2px solid aquamarine;
+    outline: 2px solid #671F45;
 }
 
 button:hover{
-    background-color: orange;
+    background-color: #671F45;
+    color: white;
 }
 
 h3{
+    margin: 30px;
     padding: 10px;
     border-bottom: 1px solid black;
+    text-align: center;
 }
