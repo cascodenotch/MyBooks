@@ -1,0 +1,19 @@
+footer{
+    border: 0px solid orange;
+    background-color: aquamarine;
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10vh;
+    padding: 10px;
+}
+
+.redes{
+    border: 0px solid red;
+    font-size: medium;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    gap:10px ;
+}
