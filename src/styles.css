@@ -6,3 +6,25 @@
     margin: 0;
     font-family: "Open Sans", sans-serif;
 }
+
+button{
+    background-color: #CB607D ;
+    padding: 10px;
+    border-radius: 2px;
+    border: transparent;
+    margin: 30px;
+    width: 5cm;
+}
+
+input{
+    width: 5cm;
+}
+
+input:focus{
+    outline: 2px solid #671F45;
+}
+
+button:hover{
+    background-color: #671F45;
+    color: white;
+}

@@ -1,0 +1,21 @@
+<div class="contenedor-principal">
+    <div class="caja-datos">
+        <img src="/assets/fotoperfil.jpg" alt="Foto">
+        <p class="bold">{{user.name}} {{user.last_name}}</p>
+        <p><strong>Nombre:</strong> {{user.name}}</p>
+        <p><strong>Apellido:</strong> {{user.last_name}}</p>
+        <p><strong>Correo:</strong> {{user.email}}</p>
+    </div>
+    <div class="caja-editar">
+        <h3>Editar Datos</h3>
+        <label for="nombre">Nombre</label>
+        <input type="text" #input1>
+        <label for="">Apellido</label>
+        <input type="text" #input2>
+        <label for="correo">Correo</label>
+        <input type="text" #input3>
+        <label for="url">URL</label>
+        <input type="text">
+        <button (click)="editUser(input1.value, input2.value, input3.value)">Modificar</button>
+    </div>
+</div>
