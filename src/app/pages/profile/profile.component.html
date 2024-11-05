@@ -1,6 +1,6 @@
 <div class="contenedor-principal">
     <div class="caja-datos">
-        <img src="/assets/fotoperfil.jpg" alt="Foto">
+        <img [src]="user.photo" alt="Foto">
         <p class="bold">{{user.name}} {{user.last_name}}</p>
         <p><strong>Nombre:</strong> {{user.name}}</p>
         <p><strong>Apellido:</strong> {{user.last_name}}</p>
@@ -14,8 +14,11 @@
         <input type="text" #input2>
         <label for="correo">Correo</label>
         <input type="text" #input3>
-        <label for="url">URL</label>
-        <input type="text">
-        <button (click)="editUser(input1.value, input2.value, input3.value)">Modificar</button>
+        <label for="url">Foto URL</label>
+        <input type="text" #input4>
+        <button (click)="editUser(input1.value, input2.value, input3.value, input4.value)">Modificar</button>
+
+       <p class="mensaje">{{mensaje}}</p>
+
     </div>
 </div>
