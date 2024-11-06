@@ -6,7 +6,7 @@
         <p><strong>Apellido:</strong> {{user.last_name}}</p>
         <p><strong>Correo:</strong> {{user.email}}</p>
     </div>
-    <div class="caja-editar">
+    <form class="caja-editar">
         <h3>Editar Datos</h3>
         <label for="nombre">Nombre</label>
         <input type="text" #input1>
@@ -16,9 +16,9 @@
         <input type="text" #input3>
         <label for="url">Foto URL</label>
         <input type="text" #input4>
-        <button (click)="editUser(input1.value, input2.value, input3.value, input4.value)">Modificar</button>
+        <button type="button" (click)="editUser(input1.value, input2.value, input3.value, input4.value)">Modificar</button>
 
        <p class="mensaje">{{mensaje}}</p>
 
-    </div>
+    </form>
 </div>
