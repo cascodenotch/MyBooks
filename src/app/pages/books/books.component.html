@@ -12,7 +12,7 @@
                 <p>{{book.id_book | ref}}</p>
         </div>
         <p>{{book.price}}€</p>
-        <button [ngClass]="{'espar':even, '': !even}">Comprar</button>
+        <button [ngClass]="{'espar':even, '': !even}" id="sin-margen">Comprar</button>
     </div>
 </ng-container>
 
@@ -25,7 +25,7 @@
 <section class="contenedor-formulario">
 
 <form>
-    <h3>Añadir libro</h3>
+    <h3 class="espacio-inferior">Añadir libro</h3>
     <label for="idLibro">ID libro</label>
     <input type="number" id="idLibro" #input1>
     <label for="idUser">ID usuario</label>
