@@ -45,8 +45,10 @@
 }
 
 .texto-tarjeta{
-    text-align: left;
-    padding: 10px;
+    height:150px ;
+    width: 300px;
+    text-align:left;
+    padding: 20px;
 }
 
 .linea-inferior{

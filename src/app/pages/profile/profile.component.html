@@ -18,17 +18,6 @@
         <input type="text" #input4>
         <button type="button" (click)="editUser(input1.value, input2.value, input3.value, input4.value)">Modificar</button>
 
-       <p class="mensaje">{{mensaje}}</p>
-
-       <!-- <ng-container *ngIf='(input1.value=="") && (input2.value=="") && (input3.value=="") && (input4.value==""), else esFalso'>
-        <p>No hay cambios</p>
-       </ng-container>
-
-       <ng-template #esFalso>
-        <p>Perfil actualizado</p>
-       </ng-template> -->
-
-       
-
+       <p [ngStyle]="{color:mensaje=='Usuario actualizado' ? 'green' : 'red'}">{{mensaje}}</p>
     </form>
 </div>
