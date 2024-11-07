@@ -26,7 +26,7 @@
 .tarjeta {
     background-color: #FBE6C5;
     border: 0px solid greenyellow;
-    height: 400px;
+    height: 450px;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,7 @@
 }
 
 .texto-tarjeta{
+    border: 0px solid salmon;
     height:150px ;
     width: 300px;
     text-align:left;
@@ -58,6 +59,37 @@
 img{
     height: 100%;
     width: auto;
+}
+
+.aspa{
+    border: 0px solid yellowgreen;
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Botones */
+
+#boton-aspa{
+    border: 0px solid red;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.espar{
+    background-color:  #FBC5C3;
+}
+
+.espar:hover{
+    background-color:  #CB607D;
+}
+
+#sin-margen{
+    margin: 0;
 }
 
 /* Formulario */
@@ -78,16 +110,3 @@ form{
 }
 
 
-/* Botones */
-
-.espar{
-    background-color:  #FBC5C3;
-}
-
-.espar:hover{
-    background-color:  #CB607D;
-}
-
-#sin-margen{
-    margin: 0;
-}

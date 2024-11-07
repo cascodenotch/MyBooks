@@ -1,5 +1,4 @@
 .contenedor-principal {
-
     min-height: 80vh;
     border: 0px solid red;
     display: flex;
@@ -44,8 +43,6 @@ img{
     margin-bottom: 30px;
 }
 
-
-
 .bold{
     font-weight: bold;
 }
@@ -54,4 +51,18 @@ h3{
     border-bottom: 1px solid black;
     margin: 30px;
     padding: 10px;
+}
+
+button{
+    background-color: #CB607D ;
+    padding: 10px;
+    border-radius: 2px;
+    border: transparent;
+    margin: 30px;
+    width: 5cm;
+}
+
+button:hover{
+    background-color: #671F45;
+    color: white;
 }

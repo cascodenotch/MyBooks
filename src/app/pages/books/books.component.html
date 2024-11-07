@@ -1,24 +1,41 @@
 <section class="contenedor-principal">
 
 <ng-container *ngIf="arrayBooks.length>0, else esFalso">
-    <div class="tarjeta" *ngFor="let book of arrayBooks; let even = even">
-        <div class="portada">
-            <img [src]="book.photo" alt="Foto">
-        </div>
-        <div class="texto-tarjeta">
-                <p class="linea-inferior">{{book.type}}</p>
-                <h3>{{book.title}}</h3>
-                <p>{{book.author}}</p>
-                <p>{{book.id_book | ref}}</p>
-        </div>
-        <p>{{book.price}}€</p>
-        <button [ngClass]="{'espar':even, '': !even}" id="sin-margen">Comprar</button>
-    </div>
+    <ng-container *ngFor="let element of arrayBooks; let i= index">
+    <app-card [book]="element" (cerrarTarjeta)="close($event)" [par]="i%2==0"></app-card>
+    </ng-container> 
 </ng-container>
 
 <ng-template #esFalso>
     <p>No hay libros</p>
 </ng-template>
+
+<!-- <ng-container *ngIf="arrayBooks.length>0, else esFalso">
+    <ng-container *ngFor="let book of arrayBooks; let even = even"> -->
+        <!-- <div class="tarjeta">
+            <div class="aspa">
+                <button id="boton-aspa">
+                    <img src="assets/cerrar.png" alt="">
+                </button>
+            </div>
+            <div class="portada">
+                <img [src]="book.photo" alt="Foto">
+            </div>
+            <div class="texto-tarjeta">
+                    <p class="linea-inferior">{{book.type}}</p>
+                    <h3>{{book.title}}</h3>
+                    <p>{{book.author}}</p>
+                    <p>{{book.id_book | ref}}</p>
+            </div>
+            <p>{{book.price}}€</p>
+            <button [ngClass]="{'espar':even, '': !even}" id="sin-margen">Comprar</button>
+        </div> -->
+    <!-- </ng-container>
+</ng-container> -->
+
+<!-- <ng-template #esFalso>
+    <p>No hay libros</p>
+</ng-template> -->
 
 </section>
 

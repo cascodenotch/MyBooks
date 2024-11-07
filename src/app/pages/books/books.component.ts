@@ -29,4 +29,10 @@ guardarLibro(newIDBook:number, newIDUser: number, newTitle:string, newType: stri
   console.log (this.arrayBooks);
 }
 
+close(closedBook:Book){
+
+this.arrayBooks = this.arrayBooks.filter(element => element!=closedBook)
+
+}
+
 }

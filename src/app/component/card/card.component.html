@@ -1,1 +1,18 @@
-<p>card works!</p>
+<div class="tarjeta">
+    <div class="aspa">
+        <button id="boton-aspa" (click)="closedBook()">
+            <img src="assets/cerrar.png" alt="">
+        </button>
+    </div>
+    <div class="portada">
+        <img [src]="book.photo" alt="Foto">
+    </div>
+    <div class="texto-tarjeta">
+            <p class="linea-inferior">{{book.type}}</p>
+            <h3>{{book.title}}</h3>
+            <p>{{book.author}}</p>
+            <p>{{book.id_book | ref}}</p>
+    </div>
+    <p>{{book.price}}€</p>
+    <button [ngClass]="{'espar':par, '': !par}">Comprar</button>
+</div>
