@@ -1,0 +1,20 @@
+<section class="contenedor-formulario">
+
+    <form>
+        <h3 class="espacio-inferior">Añadir libro</h3>
+        <label for="idLibro">ID libro</label>
+        <input type="number" id="idLibro" #input1>
+        <label for="idUser">ID usuario</label>
+        <input type="number" id="idUser" #input2>
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" #input3>
+        <label for="tipo">Tipo</label>
+        <input type="text" id="tipo" #input4>
+        <label for="autor">Autor</label>
+        <input type="text" id="autor" #input5>
+        <label for="precio">Precio</label>
+        <input type="number" id="precio"#input6>
+        <label for="url">Foto URL</label>
+        <input type="text" id="url" #input7>
+        <button type="button" (click)="guardarLibro(input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value)">Guardar</button>
+    </form>

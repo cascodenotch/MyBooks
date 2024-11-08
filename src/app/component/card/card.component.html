@@ -14,5 +14,6 @@
             <p>{{book.id_book | ref}}</p>
     </div>
     <p>{{book.price}}€</p>
-    <button [ngClass]="{'espar':par, '': !par}">Comprar</button>
+    <!-- <button [ngClass]="{'espar':par, '': !par}">Comprar</button> -->
+    <button [ngClass]="par ? 'espar' : ''">Comprar</button>
 </div>
