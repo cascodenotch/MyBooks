@@ -1,13 +1,21 @@
 <section class="contenedor-principal">
 
-<ng-container *ngIf="arrayBooks.length>0, else esFalso">
-    <ng-container *ngFor="let element of arrayBooks; let i= index">
-    <app-card [book]="element" (cerrarTarjeta)="close($event)" [par]="i%2==0"></app-card>
-    </ng-container> 
-</ng-container>
+<form>
+    <input type="search" placeholder="escribe el id del libro que quieres buscar" #search>
+    <button (click)="buscar(search.value)">Buscar</button>
+</form> 
 
-<ng-template #esFalso>
-    <p>No hay libros</p>
-</ng-template>
+<div class="contenedor-tarjetas">
+    <ng-container *ngIf="arrayBooks.length>0, else esFalso">
+        <ng-container *ngFor="let element of arrayBooks; let i= index">
+        <app-card [book]="element" (cerrarTarjeta)="close($event)" [par]="i%2==0"></app-card>
+        </ng-container> 
+    </ng-container>
+
+    <ng-template #esFalso>
+        <p>No hay libros</p>
+    </ng-template>
+
+</div>
 
 </section>

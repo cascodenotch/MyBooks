@@ -22,4 +22,16 @@ this.arrayBooks = this.bookService.getAll();
 
 }
 
+buscar (id_busqueda: number){
+
+  if (id_busqueda == null ){
+    this.arrayBooks = this.bookService.getAll();
+  }
+  
+  else {
+    let librobuscado = this.bookService.getOne(id_busqueda);
+    this.arrayBooks = [librobuscado];
+  }
+
+}
 }
