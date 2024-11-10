@@ -10,6 +10,7 @@ import { BooksService } from 'src/app/shared/books.service';
 export class BooksComponent {
 
 public arrayBooks: Book[];
+public showAlert:boolean = false; 
 
 constructor(public bookService:BooksService){
   this.arrayBooks = this.bookService.getAll()
@@ -24,14 +25,15 @@ this.arrayBooks = this.bookService.getAll();
 
 buscar (id_busqueda: number){
 
-  if (id_busqueda == null ){
-    this.arrayBooks = this.bookService.getAll();
-  }
-  
-  else {
-    let librobuscado = this.bookService.getOne(id_busqueda);
-    this.arrayBooks = [librobuscado];
-  }
+let libroEncontrado = this.bookService.getOne(id_busqueda);
 
+  if (libroEncontrado != null) {
+    this.arrayBooks = [libroEncontrado]; 
+    this.showAlert = false;
+  } else {
+    this.arrayBooks = [];
+    this.showAlert = true; 
+  }
 }
+
 }

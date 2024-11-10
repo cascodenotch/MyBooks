@@ -9,12 +9,17 @@ import { BooksService } from 'src/app/shared/books.service';
 })
 export class AddBookComponent {
 
+  public showAlert:boolean = false;
+
   constructor(public bookService:BooksService) {}
 
   guardarLibro(newIDBook:number, newIDUser: number, newTitle:string, newType: string, newAuthor:string, newPrice:number, newPhoto:string)
   {
     this.bookService.add(new Book(newIDBook, newIDUser, newTitle, newType,newAuthor, newPrice,newPhoto));
+    this.showAlert = true; 
     
   }
+
+  
 
 }

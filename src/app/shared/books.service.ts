@@ -26,6 +26,7 @@ export class BooksService {
       return libro;
       }
     }
+    return null;
   }
 
   public add(book: Book): void{
@@ -47,6 +48,7 @@ export class BooksService {
         return true;
       }
     }
+      return false;
   }
 
   public delete(id_book: number): boolean{
