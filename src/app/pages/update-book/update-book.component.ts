@@ -17,7 +17,6 @@ export class UpdateBookComponent {
   modificarLibro(newIDBook:number, newIDUser: number, newTitle:string, newType: string, newAuthor:string, newPrice:number, newPhoto:string)
   {
     let editado = new Book (newIDBook, newIDUser, newTitle, newType,newAuthor, newPrice,newPhoto);
-    this.bookService.edit(editado);
     let resultado = this.bookService.edit(editado);
 
     if (resultado == true){

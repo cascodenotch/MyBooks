@@ -13,7 +13,8 @@
             <p>{{book.author}}</p>
             <p>{{book.id_book | ref}}</p>
     </div>
+    <div class="precio-boton">
     <p>{{book.price}}€</p>
-    <!-- <button [ngClass]="{'espar':par, '': !par}">Comprar</button> -->
     <button [ngClass]="par ? 'espar' : ''">Comprar</button>
+    </div>
 </div>

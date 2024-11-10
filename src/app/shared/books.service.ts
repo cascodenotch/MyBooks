@@ -19,7 +19,7 @@ export class BooksService {
     return this.books;
   }
 
-  public getOne(id_libro: number): Book{
+  public getOne(id_libro: number): Book | null {
 
     for (let libro of this.books){
       if (libro.id_book == id_libro){
