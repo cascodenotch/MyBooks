@@ -5,10 +5,18 @@
     </div> -->
 
     <section class="contenedor-formulario">
-        <form>
+        <form #formAdd="ngForm">
             <h3 class="espacio-inferior">Añadir libro</h3>
-            <label for="idLibro">ID libro</label>
-            <input type="number" id="idLibro" #input1>
+
+            <div class="form-group">
+                <label>ID libro</label>
+                <input id="idLibro" #input1 class="form-control" type="number" name="idLibro" [(ngModel)]="book.id_book" #libroId="ngModel"
+                [ngClass]="{ 'is-invalid': (libroId.dirty || libroId.touched) && libroId.invalid }" required>
+                    <div *ngIf="(libroId.dirty || libroId.touched) && libroId.invalid" class="invalid-feedback">
+                        <div *ngIf="libroId.errors.required">El ID es obligatorio</div>
+                    </div>
+            </div>
+
             <label for="idUser">ID usuario</label>
             <input type="number" id="idUser" #input2>
             <label for="titulo">Título</label>
@@ -21,7 +29,7 @@
             <input type="number" id="precio"#input6>
             <label for="url">Foto URL</label>
             <input type="text" id="url" #input7>
-            <button type="button" (click)="guardarLibro(input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value)">Guardar</button>
+            <button [disabled]="formAdd.invalid" (click)="guardarLibro(input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value)">Guardar</button>
         </form>
 
     </section>

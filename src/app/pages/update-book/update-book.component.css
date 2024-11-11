@@ -12,7 +12,6 @@
 
 .contenedor-formulario {
     border: 0px solid red;
-    border-top: 1px solid black;
     min-height: 80vh;
     display: flex;
     justify-content: center;
@@ -47,5 +46,9 @@ button{
     width: 5cm;
 }
 
-
-
+h3{
+    margin: 30px;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
