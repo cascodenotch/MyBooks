@@ -1,12 +1,53 @@
-<form>
+<form [formGroup]="formRegister">
     <h3>Únete a nuestra comunidad de lectores</h3>
-    <label for="nombre">Nombre</label>
-    <input type="text" id="nombre">
-    <label for="apellido">Apeliido</label>
-    <input type="text" id="apellido">
-    <label for="correo">Correo</label>
-    <input type="text" id="correo">
-    <label for="contraseña">Contraseña</label>
-    <input type="text" id="contraseña">
-    <button>Registrarse</button>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre"
+        [ngClass]="{'is-invalid': (formRegister.get('nombre').dirty || formRegister.get('nombre').touched) && !formRegister.get('nombre').valid}">
+        <div *ngIf="!formRegister.get('nombre').valid" class="invalid-feedback">
+        El nombre es necesario
+        </div>   
+    </div>
+
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" class="form-control" formControlName="apellido"
+        [ngClass]="{'is-invalid': (formRegister.get('apellido').dirty || formRegister.get('apellido').touched) && !formRegister.get('apellido').valid}">
+        <div *ngIf="!formRegister.get('apellido').valid" class="invalid-feedback">
+        El apellido es necesario
+        </div>   
+    </div>
+
+    <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="email" class="form-control" formControlName="email"
+        [ngClass]="{'is-invalid': (formRegister.get('email').dirty || formRegister.get('email').touched) && !formRegister.get('email').valid}">
+        <div *ngIf="!formRegister.get('email').valid" class="invalid-feedback">
+          <div *ngIf="formRegister.get('email').errors.required">La dirección de email es obligatoria</div>
+          <div *ngIf="formRegister.get('email').errors.email">Dirección email incorrecta</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="contraseña">Contraseña</label>
+        <input type="password" class="form-control" formControlName="password"
+        [ngClass]="{'is-invalid': (formRegister.get('password').dirty || formRegister.get('password').touched) && !formRegister.get('password').valid}">
+        <div *ngIf="!formRegister.get('password').valid" class="invalid-feedback">
+          <div *ngIf="formRegister.get('password').errors.required">La clave es obligatoria</div>
+          <div *ngIf="formRegister.get('password').errors.minlength">La clave debe tener al menos 8 caracteres</div>    
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="contraseña">Repetir contraseña</label>
+        <input type="password" class="form-control" formControlName="password2"
+        [ngClass]="{'is-invalid': (formRegister.get('password2').dirty || formRegister.get('password2').touched) && !formRegister.get('password2').valid}">
+        <div *ngIf="!formRegister.get('password2').valid" class="invalid-feedback">
+          <div *ngIf="formRegister.get('password2').errors.required">La clave es obligatoria</div>
+          <div *ngIf="!formRegister.get('password2').errors.required && 
+                    formRegister.get('password2').errors.matchPassword">Las claves no coinciden</div> 
+          </div>
+    </div>
+
+    <button (click)="register()" [disabled]="formRegister.invalid">Registrarse</button>
 </form>
