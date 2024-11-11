@@ -1,3 +1,15 @@
+.contenedor-principal{
+    border: 0px solid palevioletred;
+    min-height: 80vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
 .contenedor-formulario {
     border: 0px solid red;
     border-top: 1px solid black;
