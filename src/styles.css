@@ -7,10 +7,6 @@
     font-family: "Open Sans", sans-serif;
 }
 
-input{
-    width: 5cm;
-}
-
 input:focus{
     outline: 2px solid #671F45;
 }
