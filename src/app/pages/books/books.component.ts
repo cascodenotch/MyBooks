@@ -10,32 +10,41 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BooksComponent {
 
-public arrayBooks: Book[];
-// public showAlert:boolean = false; 
+public arrayBooks: Book[] = [];
 
 constructor(public bookService:BooksService, private toastr: ToastrService){
-  this.arrayBooks = this.bookService.getAll()
+  this.bookService.getAll().subscribe({
+    next: (books: Book[]) => {
+      this.arrayBooks = books; 
+    }
+  })
+}
+ 
+close(closedBook: Book): void {
+  this.bookService.delete(closedBook.id_book).subscribe({
+    next: () => {
+      this.bookService.getAll().subscribe({
+        next: (books: Book[]) => {
+          this.arrayBooks = books;  
+        }
+      });
+      this.toastr.success('Libro eliminado', '', { timeOut: 2000, positionClass: 'toast-top-center' });
+    },
+  });
 }
 
-close(closedBook:Book){
+buscar(id_busqueda: number): void {
+  this.bookService.getOne(id_busqueda).subscribe({
+    next: (libroEncontrado: Book) => {
+      if (libroEncontrado) {
+        this.arrayBooks = [libroEncontrado];
+      } else {
+        this.arrayBooks = []; 
+        this.toastr.error('No se ha encontrado el ID del libro', '', { timeOut: 2000, positionClass: 'toast-top-center' });
+      }
+    },
+  });
 
-this.bookService.delete(closedBook.id_book);
-this.arrayBooks = this.bookService.getAll();
-
-}
-
-buscar (id_busqueda: number){
-
-let libroEncontrado = this.bookService.getOne(id_busqueda);
-
-  if (libroEncontrado != null) {
-    this.arrayBooks = [libroEncontrado]; 
-    // this.showAlert = false;
-  } else {
-    this.arrayBooks = [];
-    // this.showAlert = true; 
-    this.toastr.error("No se ha encontrado el ID del libro", "", {timeOut: 2000, positionClass:'toast-top-center'});
-  }
 }
 
 }

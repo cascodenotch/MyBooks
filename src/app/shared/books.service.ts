@@ -1,61 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
 
-  private books: Book[] = [
-    new Book(1, 1, "Hamnet", "Tapa blanda", "Maggie O Farrel", 20, "/assets/portadahamnet.jpg"),
-    new Book(2, 2, "Los peligros de fumar en la cama", "Tapa blanda", "Mariana Enriquez", 20, "assets/portadalibro.jpeg"),
-    new Book(3, 3, "Imposible decir adiós", "Tapa blanda", "Han kang", 20, "/assets/portadaadios.jpg")
-  ];
+  private apiUrl: string = 'http://localhost:3000/api/v2/books';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  public getAll(): Book[]{
-
-    return this.books;
+  getAll() {
+    return this.http.get(this.apiUrl);
   }
 
-  public getOne(id_libro: number): Book | null {
-
-    for (let libro of this.books){
-      if (libro.id_book == id_libro){
-      return libro;
-      }
-    }
-    return null;
+  getOne(id_book: number) {
+    return this.http.get(`${this.apiUrl}/${id_book}`);
   }
 
-  public add(book: Book): void{
-
-    this.books.push(book);
-
+  add(book: Book) {
+    return this.http.post(this.apiUrl, book);
   }
 
-  public edit(book: Book): boolean{
-
-    for (let libro of this.books){
-      if (libro.id_book == book.id_book){
-        libro.id_user = book.id_user;
-        libro.title = book.title;
-        libro.type = book.type;
-        libro.author = book.author;
-        libro.price = book.price;
-        libro.photo = book.photo;
-        return true;
-      }
-    }
-      return false;
+  edit(book: Book) {
+    return this.http.put(this.apiUrl, book);
+  }
+  
+  delete(id_book: number){
+    return this.http.delete(`${this.apiUrl}/${id_book}`);
   }
 
-  public delete(id_book: number): boolean{
-    
-    this.books = this.books.filter(element => element.id_book!=id_book)
-    return true;
-    }
+}
 
-  }
 

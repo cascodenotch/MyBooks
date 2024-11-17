@@ -1,20 +1,16 @@
 <section class="contenedor-principal">
 
-    <!-- <div *ngIf="showAlert" class="alert alert-success" role="alert">
-        ¡El libro se ha añadido!
-    </div> -->
-
     <section class="contenedor-formulario">
         <form #formAdd="ngForm">
             <h3 class="espacio-inferior">Añadir libro</h3>
 
             <div class="form-group">
                 <label>ID libro</label>
-                <input #input1 class="form-control" type="number" name="idLibro" [(ngModel)]="book.id_book" #libroId="ngModel"
+                <input class="form-control" type="number" name="id_book" [(ngModel)]="book.id_book" #libroId="ngModel"
                 [ngClass]="{ 'is-invalid': (libroId.dirty || libroId.touched) && libroId.invalid }" required>
-                    <div *ngIf="(libroId.dirty || libroId.touched) && libroId.invalid" class="invalid-feedback">
-                        <div *ngIf="libroId.errors.required">El ID del libro es obligatorio</div>
-                    </div>
+                <div *ngIf="(libroId.dirty || libroId.touched) && libroId.invalid" class="invalid-feedback">
+                    <div *ngIf="libroId.errors.required">El ID del libro es obligatorio</div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -38,10 +34,10 @@
             <div class="form-group">
                 <label for="tipo">Tipo</label>
                 <input #input4 class="form-control" type="text" name="idTipo" [(ngModel)]="book.type" #tipoId="ngModel"
-                [ngClass]="{ 'is-invalid': (libroId.dirty || libroId.touched) && libroId.invalid }" required>
-                    <div *ngIf="(tipoId.dirty || tipoId.touched) && tipoId.invalid" class="invalid-feedback">
-                        <div *ngIf="tipoId.errors.required">El tipo es obligatorio</div>
-                    </div>
+                [ngClass]="{ 'is-invalid': (tipoId.dirty || tipoId.touched) && tipoId.invalid }" required>
+                <div *ngIf="(tipoId.dirty || tipoId.touched) && tipoId.invalid" class="invalid-feedback">
+                    <div *ngIf="tipoId.errors.required">El tipo es obligatorio</div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -58,7 +54,7 @@
                 <input #input6 class="form-control" type="number" name="idPrecio" [(ngModel)]="book.price" #precioId="ngModel"
                 [ngClass]="{ 'is-invalid': (precioId.dirty || precioId.touched) && precioId.invalid }" required>
                     <div *ngIf="(precioId.dirty || precioId.touched) && precioId.invalid" class="invalid-feedback">
-                        <div *ngIf="libroId.errors.required">El precio es obligatorio</div>
+                        <div *ngIf="precioId.errors.required">El precio es obligatorio</div>
                     </div>
             </div>
 
@@ -71,8 +67,8 @@
                     </div>
             </div>
 
-            <button [disabled]="formAdd.invalid" (click)="guardarLibro(input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value)">Guardar</button>
-        </form>
+            <button [disabled]="formAdd.invalid" (click)="guardarLibro()">Guardar</button>
+      </form>
 
     </section>
 
