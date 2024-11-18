@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { ToastrService } from 'ngx-toastr';
+import { Response } from 'src/app/models/response';
 
 @Component({
   selector: 'app-add-book',
@@ -15,26 +16,17 @@ export class AddBookComponent {
 
   constructor(public bookService:BooksService, private toastr: ToastrService) {}
 
-
   guardarLibro(): void {
-    this.bookService.add(this.book).subscribe({
-      next: (response) => {
-        this.toastr.success("Libro añadido con éxito", "", { timeOut: 2000, positionClass: 'toast-top-center' });
-  
-        this.bookService.getAll().subscribe({
-          next: (response: any) => {
-            this.arrayBooks = response.data;
-          },
-          error: (error) => {
-            this.toastr.error('No se pudo cargar la lista de libros', '', { timeOut: 2000, positionClass: 'toast-top-center' });
-          }
-        });
-      },
-      error: (error) => {
-        this.toastr.error("Error al añadir el libro", "", { timeOut: 2000, positionClass: 'toast-top-center' });
-      }
-    });
-
     
+    this.bookService.add(this.book).subscribe((response:Response)=>{
+    if (response.codigo == 404){
+      this.toastr.error("Ya existe ese libro", "", { timeOut: 2000, positionClass: 'toast-top-center' });
+    } else{
+      this.arrayBooks = response.data;
+      this.toastr.success("Libro añadido con éxito", "", { timeOut: 2000, positionClass: 'toast-top-center' });
+    }
+    })
+
+  
   }
 }

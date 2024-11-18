@@ -26,6 +26,7 @@ export class BooksService {
   }
 
   edit(book: Book) {
+    console.log (book);
     return this.http.put(this.apiUrl, book);
   }
   
