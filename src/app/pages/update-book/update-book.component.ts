@@ -24,7 +24,9 @@ modificarLibro(newIDBook:string, newIDUser: string, newTitle:string, newType: st
        if (response.codigo==404){
         this.toastr.error('Error', '', { timeOut: 2000, positionClass: 'toast-top-center' });
        }
-       else {this.arrayBooks = [response.data];}
+       else {this.arrayBooks = [response.data];
+        this.toastr.success('Libro modificado con éxito', '', { timeOut: 2000, positionClass: 'toast-top-center' });
+       }
     }) 
 }
 

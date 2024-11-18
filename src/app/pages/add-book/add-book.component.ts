@@ -19,14 +19,13 @@ export class AddBookComponent {
   guardarLibro(): void {
     
     this.bookService.add(this.book).subscribe((response:Response)=>{
-    if (response.codigo == 404){
+    if (response.codigo == 400){
       this.toastr.error("Ya existe ese libro", "", { timeOut: 2000, positionClass: 'toast-top-center' });
     } else{
       this.arrayBooks = response.data;
       this.toastr.success("Libro añadido con éxito", "", { timeOut: 2000, positionClass: 'toast-top-center' });
     }
     })
-
-  
   }
+  
 }

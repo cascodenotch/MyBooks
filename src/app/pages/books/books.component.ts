@@ -29,6 +29,7 @@ close(book: Book): void {
       this.toastr.error('Error', '', { timeOut: 2000, positionClass: 'toast-top-center' });
     }
     else {this.arrayBooks = response.data;}
+      this.toastr.success('Libro eliminado con éxito', '', { timeOut: 2000, positionClass: 'toast-top-center' });
   });
 }
 
