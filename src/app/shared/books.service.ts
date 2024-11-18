@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BooksService {
 
-  private apiUrl: string = 'http://localhost:3000/api/v2/books';
+  private apiUrl: string = 'http://localhost:3000/books';
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +16,8 @@ export class BooksService {
   }
 
   getOne(id_book: number) {
+    console.log (id_book);
+    console.log (`${this.apiUrl}/${id_book}`)
     return this.http.get(`${this.apiUrl}/${id_book}`);
   }
 
