@@ -30,7 +30,9 @@ export class BooksService {
   }
   
   delete(id_book: number){
-    return this.http.delete(`${this.apiUrl}/${id_book}`);
+    console.log (id_book);
+    const httpOptions = {headers: null, body: {id_book: id_book}}
+    return this.http.delete(this.apiUrl, httpOptions);
   }
 
 }

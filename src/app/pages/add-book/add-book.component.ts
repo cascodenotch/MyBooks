@@ -34,5 +34,7 @@ export class AddBookComponent {
         this.toastr.error("Error al añadir el libro", "", { timeOut: 2000, positionClass: 'toast-top-center' });
       }
     });
+
+    
   }
 }
