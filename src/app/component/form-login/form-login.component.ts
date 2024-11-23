@@ -27,13 +27,15 @@ export class FormLoginComponent {
 
     this.user = form.value;
 
-    this.usersService.login(this.user).subscribe((response: Response) => {
+    this.usersService.login(this.user).subscribe((response: any) => {
 
       if (response.codigo == 200){
         console.log('Usuario logueado con éxito');
         this.usersService.logueado = true; 
-        this.usersService.user = this.user;
+        this.usersService.user = response.data;
+        this.user = this.usersService.user;
         this.router.navigate(['/books']);
+        console.log(this.user.Id_user);
       }
 
       if (response.codigo == 401){

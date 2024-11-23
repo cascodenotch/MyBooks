@@ -13,13 +13,13 @@ export class UsersService {
 
   public user: User = {
     Id_user: 0,
-    name: "",
-    last_name: "",
-    email: "",
-    photo: "",
-    password: ""
+    name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    photo: ''
   };
-
+  
   constructor(private http: HttpClient) {}
 
   register (user: User) {
@@ -34,5 +34,14 @@ export class UsersService {
 
   }
 
+  edit (user:User){
+
+    return this.http.put(`${this.apiUrl}/usuarios`,user);
+
+  }
+
+  getUser() {
+    return this.http.post(`${this.apiUrl}/usuarios`, { Id_user: this.user.Id_user });
+  }
 
 }

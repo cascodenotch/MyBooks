@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,41 +9,46 @@ import { User } from 'src/app/models/user';
 })
 export class ProfileComponent {
 
-  public user: User;
+  public user: User = {
+    Id_user: 0,
+    name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    photo: ''
+  };
+
   public mensaje: string;
 
-  constructor (){
-    this.user =new User(1, "Catalina", "Arciniegas", "cas@gmail.com", "/assets/fotoperfil.jpg", "cas");
-  }
-
-  public mostrarNombre2 (){
-    console.log(this.user.name)
+  constructor(private usersService: UsersService) {
+    if (this.usersService.user.Id_user > 0) {  // Asegúrate de que Id_user tenga un valor válido
+      this.usersService.getUser().subscribe({
+        next: (response: any) => {
+          this.user = response.data;
+        },
+        error: (err) => {
+          console.error('Error al cargar el usuario logueado:', err);
+        }
+      });
+    } else {
+      console.error("El ID del usuario no es válido");
+    }
   }
 
   public editUser(newName:string, newLastname: string, newEmail:string, newPhoto: string){
-  
-    if(newName != ""){
-      this.user.name = newName;
-      this.mensaje = "Usuario actualizado"
-    }
 
-    if (newLastname !=""){
-      this.user.last_name = newLastname;
-      this.mensaje = "Usuario actualizado"
-    }
-    
-    if (newEmail != ""){
-    this.user.email = newEmail; 
-     this.mensaje = "Usuario actualizado"
-    }
+    this.user.name = newName;
+    this.user.last_name = newLastname;
+    this.user.email = newEmail;
+    this.user.photo = newPhoto;
 
-    if(newPhoto!= ""){
-      this.user.photo =newPhoto;
-      this.mensaje = "Usuario actualizado"
-    }
+    this.usersService.edit(this.user).subscribe({
+      next: (response) => {
+        console.log('Usuario modificado con éxito', response);
+      },
+      error: (err) => {
+        console.error('Error al modificar usuario:', err);
 
-    if ((newPhoto=="") && (newEmail== "")&& (newLastname=="")&& (newName== "")){
-    this.mensaje = "No se detectan cambios"
-    }
-  }
+    }})
+}
 }
