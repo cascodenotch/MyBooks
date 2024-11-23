@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-form-register',
@@ -12,16 +13,9 @@ export class FormRegisterComponent {
   public formRegister: FormGroup;
   public user: User;
 
-  constructor(private formBuilder: FormBuilder) 
+  constructor(private formBuilder: FormBuilder, private usersService:UsersService) 
   { 
     this.buildForm();
-  }
-
-
-  public register() 
-  {
-    this.user = this.formRegister.value;
-    // console.log (this.user);
   }
 
   private buildForm()
@@ -29,8 +23,8 @@ export class FormRegisterComponent {
     const minPassLength = 8;
 
     this.formRegister = this.formBuilder.group({
-      nombre: [, Validators.required],
-      apellido: [, Validators.required],
+      name: [, Validators.required],
+      last_name: [, Validators.required],
       email: [, [ Validators.required, Validators.email]],
       password:[, [Validators.required, Validators.minLength(minPassLength)]],
       password2:[,[Validators.required, this.checkPasswords]],
@@ -39,12 +33,32 @@ export class FormRegisterComponent {
 
   private checkPasswords(control: AbstractControl)
   {
-    let resultado = {matchPassword: true};
+    let resultado = {noMatch: true};
 
     if (control.parent?.value.password == control.value)
       resultado = null;
 
     return resultado;
+  }
+
+  public register() 
+  {
+
+  const password2Control = this.formRegister.get('password2');
+  if (password2Control && password2Control.errors && password2Control.errors.noMatch){
+  console.error('Las contraseñas no coinciden');
+  }
+
+    this.user = this.formRegister.value;
+
+    this.usersService.register(this.user).subscribe({
+      next: (response) => {
+        console.log('Usuario registrado con éxito', response);
+      },
+      error: (err) => {
+        console.error('Error al registrar el usuario:', err);
+
+    }})
   }
 
 }
