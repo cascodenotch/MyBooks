@@ -1,13 +1,24 @@
 <header>
     <div>MyBooks</div>
     <nav>
-        <a routerLink="home" routerLinkActive="active-link">Home</a>
-        <a routerLink="registro" routerLinkActive="active-link">Registro</a>
-        <a routerLink="profile" routerLinkActive="active-link">Perfil</a>
-        <a routerLink="books" routerLinkActive="active-link">Books</a>
-        <a routerLink="addBook" routerLinkActive="active-link">Add Book</a>
-        <a routerLink="updateBook" routerLinkActive="active-link">Update Book</a>
-        <a routerLink="login" routerLinkActive="active-link">Login</a>
+
+        <!-- Para usuarios no conectados -->
+         
+        <ng-container *ngIf="!usersService.logueado; else headerUser">
+            <a routerLink="home" routerLinkActive="active-link">Home</a>
+            <a routerLink="registro" routerLinkActive="active-link">Registro</a>
+            <a routerLink="login" routerLinkActive="active-link">Login</a>
+        </ng-container>
+
+        <!-- Para usuarios conectados -->
+
+        <ng-template #headerUser>
+            <a routerLink="profile" routerLinkActive="active-link">Perfil</a>
+            <a routerLink="books" routerLinkActive="active-link">Libros</a>
+            <a routerLink="addBook" routerLinkActive="active-link">Añadir</a>
+            <a routerLink="updateBook" routerLinkActive="active-link">Modificar</a>
+        </ng-template>
+
     </nav>
 </header>
   

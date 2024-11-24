@@ -21,7 +21,6 @@ export class ProfileComponent {
   public mensaje: string;
 
   constructor(private usersService: UsersService) {
-    if (this.usersService.user.Id_user > 0) {  // Asegúrate de que Id_user tenga un valor válido
       this.usersService.getUser().subscribe({
         next: (response: any) => {
           this.user = response.data;
@@ -30,19 +29,20 @@ export class ProfileComponent {
           console.error('Error al cargar el usuario logueado:', err);
         }
       });
-    } else {
-      console.error("El ID del usuario no es válido");
-    }
   }
 
-  public editUser(newName:string, newLastname: string, newEmail:string, newPhoto: string){
+  public editUser(newName: string, newLastname: string, newEmail: string, newPhoto: string) {
+    
+    let user = this.usersService.user; 
+  
+    user.name = newName;
+    user.last_name = newLastname;
+    user.email = newEmail;
+    user.photo = newPhoto
 
-    this.user.name = newName;
-    this.user.last_name = newLastname;
-    this.user.email = newEmail;
-    this.user.photo = newPhoto;
+    console.log('Datos enviados:', user);
 
-    this.usersService.edit(this.user).subscribe({
+    this.usersService.edit(user).subscribe({
       next: (response) => {
         console.log('Usuario modificado con éxito', response);
       },
