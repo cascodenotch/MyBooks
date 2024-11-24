@@ -16,8 +16,10 @@ public arrayBooks: Book[] = [];
 constructor(public bookService:BooksService, private toastr: ToastrService){
 
   this.bookService.getAll().subscribe((response: Response) => {
-    if (response.codigo == 200) {  
+    if (response.codigo === 200) {
       this.arrayBooks = response.data; 
+    } else {
+      this.toastr.error('Error al obtener los libros');
     }
   });
 
