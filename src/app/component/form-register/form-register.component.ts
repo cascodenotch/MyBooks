@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-register',
@@ -13,7 +14,10 @@ export class FormRegisterComponent {
   public formRegister: FormGroup;
   public user: User;
 
-  constructor(private formBuilder: FormBuilder, private usersService:UsersService) 
+  constructor(
+    private formBuilder: FormBuilder, 
+    private usersService:UsersService, 
+    private toastr: ToastrService ) 
   { 
     this.buildForm();
   }
@@ -54,6 +58,7 @@ export class FormRegisterComponent {
     this.usersService.register(this.user).subscribe({
       next: (response) => {
         console.log('Usuario registrado con éxito', response);
+        this.toastr.success('Usuario registrado con éxito', 'Éxito');
       },
       error: (err) => {
         console.error('Error al registrar el usuario:', err);

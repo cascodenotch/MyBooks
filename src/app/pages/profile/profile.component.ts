@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,7 @@ export class ProfileComponent {
 
   public mensaje: string;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService,private toastr: ToastrService) {
       this.usersService.getUser().subscribe({
         next: (response: any) => {
           this.user = response.data;
@@ -45,6 +46,7 @@ export class ProfileComponent {
     this.usersService.edit(user).subscribe({
       next: (response) => {
         console.log('Usuario modificado con éxito', response);
+        this.toastr.success('Datos modficiados con éxito', 'Éxito')
       },
       error: (err) => {
         console.error('Error al modificar usuario:', err);

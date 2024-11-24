@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
 import { Response } from 'src/app/models/response';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-login',
@@ -21,7 +22,10 @@ export class FormLoginComponent {
     photo: ''           
   };
 
-  constructor(private usersService:UsersService, private router: Router){}
+  constructor(
+    private usersService:UsersService, 
+    private router: Router,
+    private toastr: ToastrService ){}
 
   submit(form: NgForm){
 
@@ -31,22 +35,21 @@ export class FormLoginComponent {
 
       if (response.codigo == 200){
         console.log('Usuario logueado con éxito');
+        this.toastr.success('Usuario logueado con éxito', 'Éxito');
         this.usersService.logueado = true; 
         this.usersService.user = response.data;
-
-        // this.user = this.usersService.user;
-
         this.router.navigate(['/books']);
-        console.log('ID de usuario logueado:', this.usersService.user.Id_user);
       }
 
       if (response.codigo == 401){
         console.log('Contraseña incorrecta');
+        this.toastr.error('Contraseña incorrecta', 'Error');
         this.usersService.logueado = false; 
       }
       
       if (response.codigo == 404){
         console.log('Correo no encontrado');
+        this.toastr.error('Correo no encontrado', 'Error');
         this.usersService.logueado = false; 
       }
 
