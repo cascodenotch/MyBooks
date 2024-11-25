@@ -26,12 +26,14 @@ constructor(public bookService:BooksService, private toastr: ToastrService){
 }
 
 close(book: Book): void {
-  this.bookService.delete(book.id_book).subscribe((response: Response) => {
-    if (response.codigo==404){
+  this.bookService.delete(book.Id_book).subscribe((response: Response) => {
+    console.log('Response recibido:', response); 
+    if (response.codigo == 404) {
       this.toastr.error('Error', '', { timeOut: 2000, positionClass: 'toast-top-center' });
-    }
-    else {this.arrayBooks = response.data;}
+    } else {
+      this.arrayBooks = response.data;
       this.toastr.success('Libro eliminado con éxito', '', { timeOut: 2000, positionClass: 'toast-top-center' });
+    }
   });
 }
 

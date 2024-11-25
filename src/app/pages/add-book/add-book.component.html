@@ -6,7 +6,7 @@
 
             <div class="form-group">
                 <label>ID libro</label>
-                <input class="form-control" type="number" name="id_book" [(ngModel)]="book.id_book" #libroId="ngModel"
+                <input class="form-control" type="number" name="id_book" [(ngModel)]="book.Id_book" #libroId="ngModel"
                 [ngClass]="{ 'is-invalid': (libroId.dirty || libroId.touched) && libroId.invalid }" required>
                 <div *ngIf="(libroId.dirty || libroId.touched) && libroId.invalid" class="invalid-feedback">
                     <div *ngIf="libroId.errors.required">El ID del libro es obligatorio</div>
@@ -15,7 +15,7 @@
 
             <div class="form-group">
                 <label>ID usuario</label>
-                <input #input2 class="form-control" type="number" name="idUsuario" [(ngModel)]="book.id_user" #usuarioId="ngModel"
+                <input #input2 class="form-control" type="number" name="idUsuario" [(ngModel)]="book.Id_user" #usuarioId="ngModel"
                 [ngClass]="{ 'is-invalid': (usuarioId.dirty || usuarioId.touched) && usuarioId.invalid }" required>
                     <div *ngIf="(usuarioId.dirty || usuarioId.touched) && usuarioId.invalid" class="invalid-feedback">
                         <div *ngIf="usuarioId.errors.required">El ID del usuario es obligatorio</div>
@@ -34,9 +34,10 @@
             <div class="form-group">
                 <label for="tipo">Tipo</label>
                 <input #input4 class="form-control" type="text" name="idTipo" [(ngModel)]="book.type" #tipoId="ngModel"
-                [ngClass]="{ 'is-invalid': (tipoId.dirty || tipoId.touched) && tipoId.invalid }" required>
+                [ngClass]="{ 'is-invalid': (tipoId.dirty || tipoId.touched) && tipoId.invalid }" [pattern]="'^(Tapa Blanda|Tapa Dura)$'" required>
                 <div *ngIf="(tipoId.dirty || tipoId.touched) && tipoId.invalid" class="invalid-feedback">
                     <div *ngIf="tipoId.errors.required">El tipo es obligatorio</div>
+                    <div *ngIf="tipoId.errors.pattern">Debe ser 'Tapa Blanda' o 'Tapa Dura'</div>
                 </div>
             </div>
 

@@ -25,7 +25,7 @@
 form{
     background-color: #FBC5C3;
     border: 0px solid greenyellow;
-    height: 550px;
+    height: auto;
     width: 300px;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,10 @@ export class BooksService {
   }
 
   getOne(id_book: number) {
-    console.log (id_book);
-    console.log (`${this.apiUrl}/${id_book}`)
-    return this.http.get(`${this.apiUrl}/${id_book}`);
-  }
+    console.log(id_book);
+    console.log(`${this.apiUrl}/book/${id_book}`);
+    return this.http.get(`${this.apiUrl}/book/${id_book}`);
+}
 
   add(book: Book) {
     return this.http.post(this.apiUrl, book);
@@ -30,10 +31,15 @@ export class BooksService {
     return this.http.put(this.apiUrl, book);
   }
   
-  delete(id_book: number){
-    console.log (id_book);
-    const httpOptions = {headers: null, body: {id_book: id_book}}
+  delete(Id_book: number){
+    console.log (Id_book);
+    const httpOptions = {headers: null, body: {Id_book: Id_book}}
     return this.http.delete(this.apiUrl, httpOptions);
+  }
+
+  getBooksByUser (Id_user: number){
+    return this.http.get(`${this.apiUrl}/${Id_user}`)
+    
   }
 
 }

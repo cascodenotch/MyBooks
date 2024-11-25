@@ -11,7 +11,7 @@ import { Response } from 'src/app/models/response';
 })
 export class AddBookComponent {
   
-  public book:Book = {id_book:0,id_user:0,title:"",author:"",type:"",price:0,photo:""}
+  public book:Book = {Id_book:0,Id_user:0,title:"",author:"",type:"",price:0,photo:""}
   public arrayBooks: Book[] = [];
 
   constructor(public bookService:BooksService, private toastr: ToastrService) {}
