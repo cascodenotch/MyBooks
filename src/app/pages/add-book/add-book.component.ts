@@ -21,7 +21,11 @@ export class AddBookComponent {
     this.bookService.add(this.book).subscribe((response:Response)=>{
     if (response.codigo == 400){
       this.toastr.error("Ya existe ese libro", "", { timeOut: 2000, positionClass: 'toast-top-center' });
-    } else{
+    } 
+    if (response.codigo == 404){
+      this.toastr.error("No existe ese Id de usario", "", { timeOut: 2000, positionClass: 'toast-top-center' });
+    } 
+    else{
       this.arrayBooks = response.data;
       this.toastr.success("Libro añadido con éxito", "", { timeOut: 2000, positionClass: 'toast-top-center' });
     }
