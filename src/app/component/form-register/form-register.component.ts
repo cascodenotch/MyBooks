@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/for
 import { User } from 'src/app/models/user';
 import { UsersService } from 'src/app/shared/users.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-register',
@@ -17,7 +18,8 @@ export class FormRegisterComponent {
   constructor(
     private formBuilder: FormBuilder, 
     private usersService:UsersService, 
-    private toastr: ToastrService ) 
+    private toastr: ToastrService,
+    private router: Router ) 
   { 
     this.buildForm();
   }
@@ -58,10 +60,12 @@ export class FormRegisterComponent {
     this.usersService.register(this.user).subscribe({
       next: (response) => {
         console.log('Usuario registrado con éxito', response);
-        this.toastr.success('Usuario registrado con éxito', 'Éxito');
+        this.toastr.success('Te cuenta ha sido creada con éxito', 'Bienvenido');
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error('Error al registrar el usuario:', err);
+        this.toastr.error('Hubo un problema al crear tu cuenta. Por favor, inténtalo nuevamente.', 'Ups');
 
     }})
   }

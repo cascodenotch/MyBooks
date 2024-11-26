@@ -46,7 +46,7 @@ export class ProfileComponent {
     this.usersService.edit(user).subscribe({
       next: (response) => {
         console.log('Usuario modificado con éxito', response);
-        this.toastr.success('Datos modficiados con éxito', 'Éxito')
+        this.toastr.success('Tus datos se han actualizado correctamente!');
       },
       error: (err) => {
         console.error('Error al modificar usuario:', err);

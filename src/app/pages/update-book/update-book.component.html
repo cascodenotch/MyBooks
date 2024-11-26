@@ -23,7 +23,7 @@
                 <input class="form-control" type="text" name="type" [(ngModel)]="book.type" #tipoId="ngModel"
                 [ngClass]="{ 'is-invalid': (tipoId.dirty || tipoId.touched) && tipoId.invalid }" [pattern]="'^(Tapa Blanda|Tapa Dura)$'">
                 <div *ngIf="(tipoId.dirty || tipoId.touched) && tipoId.invalid" class="invalid-feedback">
-                    <div *ngIf="tipoId.errors.pattern">Debe ser 'Tapa Blanda' o 'Tapa Dura'</div>
+                    <div *ngIf="tipoId.errors.pattern">Escribe 'Tapa Blanda' o 'Tapa Dura', con mayúsculas al inicio.</div>
                 </div>
             </div>
 

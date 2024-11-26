@@ -23,9 +23,10 @@ modificarLibro(newIDBook:string, newIDUser: string, newTitle:string, newType: st
     this.bookService.edit(editado).subscribe((response:any)=>{
       console.log(response)
        if (response.codigo==404){
-        this.toastr.error('El Id de libro y el Id de usuario deben existir', '', { timeOut: 2000, positionClass: 'toast-top-center' });
+        this.toastr.error('Revisa que tanto el ID del libro como el ID del usuario sean correcto', '', { timeOut: 2000, positionClass: 'toast-top-center' });
        }
-       else {this.arrayBooks = [response.data];
+       else {
+        this.arrayBooks = [response.data];
         this.toastr.success('Libro modificado con éxito', '', { timeOut: 2000, positionClass: 'toast-top-center' });
        }
     }) 

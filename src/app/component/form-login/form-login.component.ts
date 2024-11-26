@@ -35,7 +35,7 @@ export class FormLoginComponent {
 
       if (response.codigo == 200){
         console.log('Usuario logueado con éxito');
-        this.toastr.success('Usuario logueado con éxito', 'Éxito');
+        this.toastr.success('Has iniciado sesión correctamente', 'Bienvenido');
         this.usersService.logueado = true; 
         this.usersService.user = response.data;
         this.router.navigate(['/books']);
@@ -43,13 +43,13 @@ export class FormLoginComponent {
 
       if (response.codigo == 401){
         console.log('Contraseña incorrecta');
-        this.toastr.error('Contraseña incorrecta', 'Error');
+        this.toastr.error('La contraseña es incorrecta', 'Ups');
         this.usersService.logueado = false; 
       }
       
       if (response.codigo == 404){
         console.log('Correo no encontrado');
-        this.toastr.error('Correo no encontrado', 'Error');
+        this.toastr.error('No encontramos un usuario con ese correo', 'Ups');
         this.usersService.logueado = false; 
       }
 
