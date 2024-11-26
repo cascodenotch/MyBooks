@@ -38,9 +38,20 @@ export class BooksService {
   }
 
   getBooksByUser (Id_user: number){
-    return this.http.get(`${this.apiUrl}/${Id_user}`)
+    return this.http.get(`${this.apiUrl}/user/${Id_user}`)
     
   }
+
+  getBooksByUserAndId(Id_book: number, Id_user: number) {
+    const httpOptions = {
+        headers: null, 
+        params: {
+            Id_book: Id_book.toString(),
+            Id_user: Id_user.toString()
+        }
+    };
+    return this.http.get(`${this.apiUrl}/filter`, httpOptions);
+}
 
 }
 
