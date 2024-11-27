@@ -9,11 +9,6 @@
             </div>
 
             <div class="form-group">
-                <label for="idUser">ID usuario</label>
-                <input class="form-control" type="number" name="Id_user" [(ngModel)]="book.Id_user" #usuarioId="ngModel">
-            </div>
-
-            <div class="form-group">
                 <label for="titulo">Título</label>
                 <input class="form-control" type="text" name="title" [(ngModel)]="book.title" #tituloId="ngModel">
             </div>
@@ -42,7 +37,7 @@
                 <input class="form-control" type="text" name="photo" [(ngModel)]="book.photo" #urlId="ngModel">
             </div>
 
-            <button (click)="modificarLibro(book.Id_book.toString(), book.Id_user.toString(), book.title, book.type, book.author, book.price.toString(), book.photo)">Modificar</button>
+            <button (click)="modificarLibro(book.Id_book.toString(), book.title, book.type, book.author, book.price.toString(), book.photo)">Modificar</button>
         </form>
     </section>
 </section>

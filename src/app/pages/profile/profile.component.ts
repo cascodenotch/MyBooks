@@ -47,6 +47,7 @@ export class ProfileComponent {
       next: (response) => {
         console.log('Usuario modificado con éxito', response);
         this.toastr.success('Tus datos se han actualizado correctamente!');
+        this.user = user;
       },
       error: (err) => {
         console.error('Error al modificar usuario:', err);

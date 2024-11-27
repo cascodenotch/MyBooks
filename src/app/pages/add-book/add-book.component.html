@@ -5,24 +5,6 @@
             <h3 class="espacio-inferior">Añadir libro</h3>
 
             <div class="form-group">
-                <label>ID libro</label>
-                <input class="form-control" type="number" name="id_book" [(ngModel)]="book.Id_book" #libroId="ngModel"
-                [ngClass]="{ 'is-invalid': (libroId.dirty || libroId.touched) && libroId.invalid }" required>
-                <div *ngIf="(libroId.dirty || libroId.touched) && libroId.invalid" class="invalid-feedback">
-                    <div *ngIf="libroId.errors.required">El ID del libro es obligatorio</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>ID usuario</label>
-                <input #input2 class="form-control" type="number" name="idUsuario" [(ngModel)]="book.Id_user" #usuarioId="ngModel"
-                [ngClass]="{ 'is-invalid': (usuarioId.dirty || usuarioId.touched) && usuarioId.invalid }" required>
-                    <div *ngIf="(usuarioId.dirty || usuarioId.touched) && usuarioId.invalid" class="invalid-feedback">
-                        <div *ngIf="usuarioId.errors.required">El ID del usuario es obligatorio</div>
-                    </div>
-            </div>
-
-            <div class="form-group">
                 <label for="titulo">Título</label>
                 <input #input3 class="form-control" type="text" name="idTitulo" [(ngModel)]="book.title" #tituloId="ngModel"
                 [ngClass]="{ 'is-invalid': (tituloId.dirty || tituloId.touched) && tituloId.invalid }" required>

@@ -3,6 +3,8 @@ import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { ToastrService } from 'ngx-toastr';
 import { Response } from 'src/app/models/response';
+import { User } from 'src/app/models/user';
+import { UsersService } from 'src/app/shared/users.service';
 
 @Component({
   selector: 'app-update-book',
@@ -14,16 +16,24 @@ export class UpdateBookComponent {
 public book:Book = {Id_book:0,Id_user:0,title:"",author:"",type:"",price:0,photo:""}
 public arrayBooks: Book[] = [];
 
-constructor(public bookService:BooksService, private toastr: ToastrService) {}
+public usuario_logueado: User;
+public id_logueado : number;
 
-modificarLibro(newIDBook:string, newIDUser: string, newTitle:string, newType: string, newAuthor:string, newPrice:string, newPhoto:string)
+constructor(public bookService:BooksService, public userService: UsersService, private toastr: ToastrService) {}
+
+modificarLibro(newIDBook:string, newTitle:string, newType: string, newAuthor:string, newPrice:string, newPhoto:string)
   {
-    let editado = new Book (Number.parseInt(newIDBook), Number.parseInt(newIDUser), newTitle, newType,newAuthor, Number.parseInt(newPrice),newPhoto);
+
+    this.usuario_logueado = this.userService.user;
+    this.id_logueado = this.usuario_logueado.Id_user;
+    this.book.Id_user = this.id_logueado;
+    
+    let editado = new Book (Number.parseInt(newIDBook), this.id_logueado, newTitle, newType,newAuthor, Number.parseInt(newPrice),newPhoto);
     
     this.bookService.edit(editado).subscribe((response:any)=>{
       console.log(response)
        if (response.codigo==404){
-        this.toastr.error('Revisa que tanto el ID del libro como el ID del usuario sean correcto', '', { timeOut: 2000, positionClass: 'toast-top-center' });
+        this.toastr.error('Revisa que el ID del libro sea correcto', '', { timeOut: 2000, positionClass: 'toast-top-center' });
        }
        else {
         this.arrayBooks = [response.data];
